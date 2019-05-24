@@ -1,11 +1,3 @@
-//
-//  AppDelegate.swift
-//  ESChallange
-//
-//  Created by Gabriel Freisz on 23/5/19.
-//  Copyright © 2019 Gabriel Freisz. All rights reserved.
-//
-
 import UIKit
 import CoreData
 
