@@ -3,10 +3,16 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "ContactJson.init(from:):Contact.swift">
+         contextName = "ViewController.tableView(_:cellForRowAt:):ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "firstName">
+               value = "contact_list[indexPath.row].value(forKey: &quot;firstName&quot;) as? String&#10;&#10;">
+            </PersistentString>
+            <PersistentString
+               value = "contact_list[0].value(forKey: &quot;firstName&quot;) as String">
+            </PersistentString>
+            <PersistentString
+               value = "contact_list.count">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -19,13 +25,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.tableView(_:cellForRowAt:):ViewController.swift">
+         contextName = "ViewController.viewDidLoad():ViewController.swift">
          <PersistentStrings>
             <PersistentString
-               value = "contact_list[indexPath.row].value(forKey: &quot;firstName&quot;) as? String&#10;&#10;">
-            </PersistentString>
-            <PersistentString
-               value = "contact_list.count">
+               value = "contact_list[0].contactID">
             </PersistentString>
             <PersistentString
                value = "contact_list[0].value(forKey: &quot;firstName&quot;) as String">
@@ -33,7 +36,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "ViewController.viewDidAppear(_:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "contact_list">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "ViewController.getFromFile():ViewController.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ViewController.tableView(_:numberOfRowsInSection:):ViewController.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "contact_list.count">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "ContactDetailViewController.viewDidLoad():ContactDetailViewController.swift">
@@ -89,13 +108,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "ViewController.viewDidLoad():ViewController.swift">
+         contextName = "ContactJson.init(from:):Contact.swift">
          <PersistentStrings>
             <PersistentString
-               value = "contact_list[0].contactID">
-            </PersistentString>
-            <PersistentString
-               value = "contact_list[0].value(forKey: &quot;firstName&quot;) as String">
+               value = "firstName">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

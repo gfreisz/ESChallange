@@ -17,6 +17,7 @@
 		C04E0B1922978F2800981012 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E0B1822978F2800981012 /* Contact.swift */; };
 		C04E0B1E2297C88600981012 /* ContactDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E0B1D2297C88600981012 /* ContactDetailViewController.swift */; };
 		C04E0B222297E0D100981012 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04E0B212297E0D100981012 /* Utils.swift */; };
+		C0E9EFA522A0421F00B33DBB /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E9EFA422A0421F00B33DBB /* ContactTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		C04E0B1822978F2800981012 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		C04E0B1D2297C88600981012 /* ContactDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewController.swift; sourceTree = "<group>"; };
 		C04E0B212297E0D100981012 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C0E9EFA422A0421F00B33DBB /* ContactTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				C04E0B0322976C5600981012 /* ViewController.swift */,
 				C04E0B1D2297C88600981012 /* ContactDetailViewController.swift */,
+				C0E9EFA422A0421F00B33DBB /* ContactTableViewCell.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				C04E0B1E2297C88600981012 /* ContactDetailViewController.swift in Sources */,
 				C04E0B0422976C5600981012 /* ViewController.swift in Sources */,
 				C04E0B0222976C5600981012 /* AppDelegate.swift in Sources */,
+				C0E9EFA522A0421F00B33DBB /* ContactTableViewCell.swift in Sources */,
 				C04E0B0A22976C5600981012 /* ESChallange.xcdatamodeld in Sources */,
 				C04E0B222297E0D100981012 /* Utils.swift in Sources */,
 			);

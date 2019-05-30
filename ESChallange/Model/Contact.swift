@@ -51,7 +51,7 @@ class Contact : NSManagedObject, Decodable {
         request.predicate = NSPredicate(format: "contactID = %@", self.contactID)
         let contact_list = try managedObjectContext.fetch(request) as! [NSManagedObject]
         
-        if (contact_list.count == 0) {
+        if (contact_list.count == 1) {
             self.save(managedObjectContext)
         } else {
             self.remove(managedObjectContext)

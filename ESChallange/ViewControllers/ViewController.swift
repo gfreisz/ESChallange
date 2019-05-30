@@ -5,6 +5,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var contactTable: UITableView! // reference to table view 
     
     var contact_list: [NSManagedObject] = [] // list to manage all contact on screen
+    var contact_images: [String] = ["contact_1", "contact_2", "contact_3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +47,17 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return contact_list.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 71
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // show the first name into the row
-        let cell:UITableViewCell=UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "mycell")
-        cell.textLabel?.text  = contact_list[indexPath.row].value(forKey: "firstName") as? String
+        let cell = tableView.dequeueReusableCell(withIdentifier: "contactCell", for: indexPath) as! ContactTableViewCell
+        cell.contactName.text = contact_list[indexPath.row].value(forKey: "firstName") as? String
+        cell.contactPhone.text = contact_list[indexPath.row].value(forKey: "phoneNumber") as? String
+        
+        let number = Int.random(in: 0 ... 2)
+        cell.contactImage.image = UIImage(named: contact_images[number])
         
         return cell
     }
