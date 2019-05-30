@@ -41,31 +41,38 @@ class ContactDetailViewController: UIViewController {
     
     // Method called when the user press over done button and modify the core data adding a new contact or modifying an existing one.
     @IBAction func save(_ sender: Any) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        
-        if contact == nil {
-            // if is nil i need to create a new contact new contact
-            self.contact = Contact.getNewInstance(context)
+        if (txt_firstName.text?.isEmpty)! {
+            let alert = UIAlertController(title: "Invalid data", message: "Please, fill the first name for the new contact", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            
+            self.present(alert, animated: true)
+        } else {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let context = appDelegate.persistentContainer.viewContext
+            
+            if contact == nil {
+                // if is nil i need to create a new contact new contact
+                self.contact = Contact.getNewInstance(context)
+            }
+            
+            // add data to contact object
+            self.contact?.firstName = txt_firstName.text!
+            self.contact?.lastName = txt_lastName.text!
+            self.contact?.phoneNumber = txt_phoneNumber.text!
+            self.contact?.city = txt_city.text!
+            self.contact?.streetAddress1 = txt_streetAddress1.text!
+            self.contact?.streetAddress2 = txt_streetAddress2.text!
+            self.contact?.state = txt_state.text!
+            self.contact?.zipCode = "";
+            self.contact?.save(context)
+            
+            // save
+            self.contact?.save(context)
+            
+            // close the current scene
+            navigationController?.popViewController(animated: true)
+            dismiss(animated: true, completion: nil)
         }
-        
-        // add data to contact object
-        self.contact?.firstName = txt_firstName.text!
-        self.contact?.lastName = txt_lastName.text!
-        self.contact?.phoneNumber = txt_phoneNumber.text!
-        self.contact?.city = txt_city.text!
-        self.contact?.streetAddress1 = txt_streetAddress1.text!
-        self.contact?.streetAddress2 = txt_streetAddress2.text!
-        self.contact?.state = txt_state.text!
-        self.contact?.zipCode = "";
-        self.contact?.save(context)
-        
-        // save
-        self.contact?.save(context)
-        
-        // close the current scene
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
     }
     
     // remove a contact from list and core data
