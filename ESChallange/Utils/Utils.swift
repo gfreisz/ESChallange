@@ -10,15 +10,26 @@ class Utils{
                 let decoder = JSONDecoder()
                 
                 decoder.userInfo[CodingUserInfoKey.context!] = context
-                _ = try decoder.decode([Contact].self, from: data)
-                
-                try context.save()
+                try decoder.decode([Contact].self, from: data)
                 return true
             } catch {
                 print("error:\(error)")
             }
         }
         return false
+    }
+    
+    static func loadJsonIfDBIsEmpty(context: NSManagedObjectContext, filename fileName: String) {
+        do {
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
+            let contact_list = try context.fetch(request) as! [NSManagedObject]
+            
+            if (contact_list.count == 0) {
+                loadJson(context: context, filename: fileName)
+            }
+        } catch {
+            print("error:\(error)")
+        }
     }
     
     // Method to clean all data from a table

@@ -70,12 +70,19 @@ class ContactDetailViewController: UIViewController {
     
     // remove a contact from list and core data
     @IBAction func remove(_ sender: Any) {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        let context = appDelegate.persistentContainer.viewContext
-        self.contact?.remove(context)
+        let alert = UIAlertController(title: "Do you want to remove contact?", message: "", preferredStyle: .alert)
         
-        // close the current scene
-        navigationController?.popViewController(animated: true)
-        dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Remove", style: .default, handler: { action in
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+            let context = appDelegate.persistentContainer.viewContext
+            self.contact?.remove(context)
+            
+            // close the current scene
+            self.navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
+        }))
+        
+        self.present(alert, animated: true)
     }
 }

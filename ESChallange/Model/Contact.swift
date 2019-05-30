@@ -33,7 +33,7 @@ class Contact : NSManagedObject, Decodable {
             let entity = NSEntityDescription.entity(forEntityName: "Contact", in: managedObjectContext) else {
                 fatalError("Failed to decode Contact!")
         }
-        self.init(entity: entity, insertInto: managedObjectContext) // prepare de entity object to can save all data
+        self.init(context: managedObjectContext) // prepare de entity object to can save all data
         
         // Decode
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -46,6 +46,16 @@ class Contact : NSManagedObject, Decodable {
         self.streetAddress1 = try values.decode(String.self, forKey: .streetAddress1)
         self.streetAddress2 = try values.decode(String.self, forKey: .streetAddress2)
         self.zipCode = try values.decode(String.self, forKey: .zipCode)
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
+        request.predicate = NSPredicate(format: "contactID = %@", self.contactID)
+        let contact_list = try managedObjectContext.fetch(request) as! [NSManagedObject]
+        
+        if (contact_list.count == 0) {
+            self.save(managedObjectContext)
+        } else {
+            self.remove(managedObjectContext)
+        }
     }
     
     // return a new instance (empty) for a contact
@@ -55,7 +65,7 @@ class Contact : NSManagedObject, Decodable {
         
         return ret;
     }
-    
+        
     // save the contact into the core data
     func save(_ context: NSManagedObjectContext){
         do {

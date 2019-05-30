@@ -13,10 +13,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let context = appDelegate.persistentContainer.viewContext
         
-        Utils.deleteAllData(context, entity: "Contact") //  at moment is only for debug porpouse
+        //Utils.deleteAllData(context, entity: "Contact") //  at moment is only for debug porpouse
         
         // every time that app start the json it's loading again and added into the model.
-        Utils.loadJson(context: context, filename: "contacts")
+        Utils.loadJsonIfDBIsEmpty(context: context, filename: "contacts")
     }
     
     // Method called everytime that the scene appear on screen. Usefull to refres the table.
@@ -30,6 +30,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // retrive all data from contacts
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Contact")
         request.returnsObjectsAsFaults = false
+        let sort = NSSortDescriptor(key: #keyPath(Contact.firstName), ascending: true)
+        request.sortDescriptors = [sort]
         do {
             contact_list = try context.fetch(request) as! [NSManagedObject]
         } catch {
